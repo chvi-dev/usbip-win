@@ -18,6 +18,7 @@ start_vhci(pvhci_dev_t vhci)
 		DBGE(DBG_PNP, "failed to register vhci device interface: %s\n", dbg_ntstatus(status));
 		return status;
 	}
+	
 	status = IoRegisterDeviceInterface(vhci->common.pdo, (LPGUID)&GUID_DEVINTERFACE_USB_HOST_CONTROLLER, NULL, &vhci->DevIntfUSBHC);
 	if (!NT_SUCCESS(status)) {
 		DBGE(DBG_PNP, "failed to register USB Host controller device interface: %s\n", dbg_ntstatus(status));
